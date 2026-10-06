@@ -6,5 +6,13 @@
     "num": "12319",
     "price": "30k",
     "thumb": "https://nft.fragment.com/gift/tophat-12319.webp"
+  },
+  {
+    "url": "https://t.me/nft/BondedRing-7169",
+    "name": "Bonded Ring",
+    "slug": "bondedring",
+    "num": "7169",
+    "price": "200k",
+    "thumb": "https://nft.fragment.com/gift/bondedring-7169.webp"
   }
 ]
