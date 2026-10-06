@@ -43,6 +43,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </head>
 <body>
 <div class="header"><h1>🎁 <span>Drake</span> Gift Market</h1></div>
+<div id="picks-wrap" style="display:none;padding:0 16px 12px"><div style="font-size:15px;font-weight:700;margin-bottom:8px">⭐ Drake's Picks</div><div class="grid" id="picks-grid" style="padding:0"></div></div>
 <div class="wallet-bar"><span id="wallet-status" style="font-size:13px;color:var(--muted)">Wallet not connected</span><div id="ton-connect-button"></div></div>
 <div class="search-bar"><input type="text" id="search" placeholder="Search by gift name or number..."></div>
 <div class="collections" id="collections"></div>
@@ -95,6 +96,13 @@ function selCol(i){cur=i;document.querySelectorAll('#collections button').forEac
 document.getElementById('search').addEventListener('input',()=>render());
 ['filter-model','filter-backdrop','filter-symbol'].forEach(id=>document.getElementById(id).addEventListener('change',()=>render()));
 fetchItems();
+function buyPick(url){if(tg&&typeof tg.openLink==='function'){tg.openLink(url)}else{window.open(url,'_blank')}}
+fetch('listings.json').then(r=>r.json()).then(list=>{
+if(!list||!list.length)return;
+document.getElementById('picks-wrap').style.display='block';
+document.getElementById('picks-grid').innerHTML=list.map(it=>
+`<div class="card"><img src="${it.thumb}" loading="lazy" onerror="this.style.display='none'"><div class="card-body"><div class="card-name">${it.name}</div><div class="card-num">#${it.num}</div><div class="card-footer"><span class="price">${it.price}</span><button class="buy-btn" onclick="buyPick('${it.url}')">Buy</button></div></div></div>`).join('');
+}).catch(()=>{});
 </script>
 </body>
 </html>
