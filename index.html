@@ -83,13 +83,13 @@ const at=it.metadata?.attributes||[];const has=(t,v)=>!v||at.some(a=>a.trait_typ
 return has('Model',fm)&&has('Backdrop',fb)&&has('Symbol',fs)});
 const g=document.getElementById('grid');
 if(!list.length){g.innerHTML='<div class="loading">No gifts found</div>';return}
-const connected=tonConnectUI.wallet!=null;
 g.innerHTML=list.map(it=>{
 const num=(it.metadata?.name||'').split('#')[1]||'';const price=it.sale? (parseInt(it.sale.price.value)/1e9).toFixed(2):null;
 const traits=(it.metadata?.attributes||[]).map(a=>a.value).join(' · ');
-return `<div class="card"><img src="${thumb(c.slug,num)}" loading="lazy" onerror="this.style.display='none'"><div class="card-body"><div class="card-name">${it.metadata?.name||'Unknown'}</div><div class="card-num">#${num}</div><div class="card-traits">${traits}</div><div class="card-footer">${price?`<span class="price">💎 ${price}</span><button class="buy-btn" ${connected?'':'disabled'} onclick="buy('${it.sale.address}','${it.sale.price.value}')">Buy</button>`:'<span style="color:var(--muted);font-size:12px">Not for sale</span>'}</div></div></div>`}).join('')}
-async function buy(saleAddr,priceNano){
-try{await tonConnectUI.sendTransaction({validUntil:Math.floor(Date.now()/1000)+300,messages:[{address:saleAddr,amount:String(priceNano)}]});if(tg)tg.showAlert('Transaction sent!')}catch(e){if(tg)tg.showAlert('Cancelled')}}
+return `<div class="card"><img src="${thumb(c.slug,num)}" loading="lazy" onerror="this.style.display='none'"><div class="card-body"><div class="card-name">${it.metadata?.name||'Unknown'}</div><div class="card-num">#${num}</div><div class="card-traits">${traits}</div><div class="card-footer">${(price&&num)?`<span class="price">💎 ${price}</span><button class="buy-btn" onclick="buyGift('${c.slug}','${num}')">Buy</button>`:'<span style="color:var(--muted);font-size:12px">Not for sale</span>'}</div></div></div>`}).join('')}
+function buyGift(slug,num){
+const url=`https://fragment.com/gift/${slug}-${num}`;
+if(tg&&typeof tg.openLink==='function'){tg.openLink(url)}else{window.open(url,'_blank')}}
 document.getElementById('collections').innerHTML=COLLECTIONS.map((c,i)=>`<button class="${i===0?'active':''}" onclick="selCol(${i})">${c.name}</button>`).join('');
 function selCol(i){cur=i;document.querySelectorAll('#collections button').forEach((b,j)=>b.classList.toggle('active',j===i));document.getElementById('grid').innerHTML='<div class="loading">Loading...</div>';fetchItems()}
 document.getElementById('search').addEventListener('input',()=>render());
