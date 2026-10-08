@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ဆရာသခင်ဒရိတ်ဘော့ — DRAKE</title>
+<meta name="description" content="The most badass Telegram group management bot. 300+ commands, 24/7 online.">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root {
+    --bg:#0a0a10; --bg2:#111118; --card:#16161f;
+    --fire:#ff4d2e; --ember:#ff9a3c; --gold:#ffd23c;
+    --txt:#f2f0ea; --mut:#9a97a3;
+  }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--txt); font-family:-apple-system,'Segoe UI',Roboto,'Noto Sans Myanmar',sans-serif; overflow-x:hidden; }
+  .ember-bg { position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(600px 400px at 15% 10%, rgba(255,77,46,.14), transparent 60%),
+      radial-gradient(500px 500px at 85% 85%, rgba(255,154,60,.10), transparent 60%),
+      radial-gradient(400px 300px at 50% 50%, rgba(255,210,60,.05), transparent 60%);
+  }
+  .wrap { position:relative; z-index:1; max-width:640px; margin:0 auto; padding:0 20px; }
+
+  /* HERO */
+  .hero { min-height:92vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:60px 0 40px; }
+  .flame { font-size:64px; filter:drop-shadow(0 0 24px rgba(255,77,46,.7)); animation:flick 2.2s ease-in-out infinite; }
+  @keyframes flick { 0%,100%{transform:scale(1) rotate(-2deg)} 50%{transform:scale(1.08) rotate(2deg)} }
+  .hero h1 { font-size:34px; font-weight:800; letter-spacing:1px; margin:18px 0 6px;
+    background:linear-gradient(135deg,var(--fire),var(--ember),var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero .handle { color:var(--mut); font-size:15px; margin-bottom:14px; }
+  .hero p.tag { font-size:16px; color:var(--txt); opacity:.85; line-height:1.7; max-width:420px; }
+  .cta-row { display:flex; gap:12px; margin-top:28px; flex-wrap:wrap; justify-content:center; }
+  .btn { display:inline-block; padding:14px 26px; border-radius:14px; font-size:15px; font-weight:700; text-decoration:none; transition:transform .15s, box-shadow .15s; }
+  .btn:active { transform:scale(.96); }
+  .btn-fire { background:linear-gradient(135deg,var(--fire),var(--ember)); color:#fff; box-shadow:0 8px 28px rgba(255,77,46,.35); }
+  .btn-ghost { background:var(--card); color:var(--txt); border:1px solid #2a2a35; }
+
+  /* STATS */
+  .stats { display:flex; gap:12px; margin:10px 0 8px; }
+  .stat { flex:1; background:var(--card); border:1px solid #23232e; border-radius:16px; padding:18px 8px; text-align:center; }
+  .stat b { display:block; font-size:24px; background:linear-gradient(135deg,var(--ember),var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .stat span { font-size:12px; color:var(--mut); }
+
+  /* SECTIONS */
+  section { padding:44px 0 8px; }
+  .sec-title { font-size:22px; font-weight:800; margin-bottom:6px; }
+  .sec-sub { color:var(--mut); font-size:14px; margin-bottom:20px; line-height:1.6; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .card { background:var(--card); border:1px solid #23232e; border-radius:18px; padding:20px 16px; opacity:0; transform:translateY(24px); transition:opacity .6s, transform .6s; }
+  .card.show { opacity:1; transform:none; }
+  .card .ic { font-size:28px; margin-bottom:10px; }
+  .card h3 { font-size:15px; margin-bottom:6px; }
+  .card p { font-size:13px; color:var(--mut); line-height:1.6; }
+
+  .wide-card { background:linear-gradient(135deg,#1b1016,#16161f); border:1px solid #3a2320; border-radius:20px; padding:26px 22px; margin-top:12px; opacity:0; transform:translateY(24px); transition:opacity .6s, transform .6s; }
+  .wide-card.show { opacity:1; transform:none; }
+  .wide-card h3 { font-size:18px; margin-bottom:8px; }
+  .wide-card p { font-size:14px; color:var(--mut); line-height:1.7; margin-bottom:16px; }
+
+  footer { text-align:center; padding:48px 0 40px; color:var(--mut); font-size:13px; line-height:2; }
+  footer a { color:var(--ember); text-decoration:none; }
+  .scroll-hint { margin-top:36px; color:var(--mut); font-size:12px; animation:bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+</style>
+</head>
+<body>
+<div class="ember-bg"></div>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="flame">🔥</div>
+    <h1>ဆရာသခင်ဒရိတ်ဘော့</h1>
+    <div class="handle">@Drake_test_bot</div>
+    <p class="tag">Telegram group management, taken to the extreme.<br>အမိုက်စား command 300+ နဲ့ မင်းရဲ့ group ကို စောင့်ရှောက်မယ်။</p>
+    <div class="cta-row">
+      <a class="btn btn-fire" href="https://t.me/Drake_test_bot?startgroup=true">➕ Group ထဲထည့်</a>
+      <a class="btn btn-ghost" href="https://oothurain77778-crypto.github.io/drake-gift-market/">🎁 Gift Market</a>
+    </div>
+    <div class="scroll-hint">▼ ဆွဲချကြည့် ▼</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>300+</b><span>Commands</span></div>
+    <div class="stat"><b>24/7</b><span>Online</span></div>
+    <div class="stat"><b>⚡</b><span>Auto Admin</span></div>
+  </div>
+
+  <section>
+    <div class="sec-title">⚡ Features</div>
+    <div class="sec-sub">Group တစ်ခု လိုအပ်သမျှ — အားလုံး တစ်နေရာတည်း</div>
+    <div class="grid">
+      <div class="card"><div class="ic">🛡️</div><h3>Group Guard</h3><p>Spam, flood, fake account ကာကွယ်ရေး — auto mute/ban</p></div>
+      <div class="card"><div class="ic">✅</div><h3>Auto Verify</h3><p>/verify ပို့ရုံနဲ့ admin auto ရမယ်</p></div>
+      <div class="card"><div class="ic">🤖</div><h3>AI Chat</h3><p>AI နဲ့ စကားပြော, ပုံထုတ်, ဘာသာပြန်</p></div>
+      <div class="card"><div class="ic">🎮</div><h3>Fun Zone</h3><p>Game, meme, sticker — ပျင်းစရာမရှိ</p></div>
+      <div class="card"><div class="ic">🎁</div><h3>Gift Market</h3><p>Telegram Gift NFT ဈေး — Mini App</p></div>
+      <div class="card"><div class="ic">📊</div><h3>Tools</h3><p>Sysinfo, id, info — admin လက်နက်</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">👑 Clone Service</div>
+    <div class="sec-sub">ကိုယ့်ပိုင် Drake clone လိုချင်လား?</div>
+    <div class="wide-card">
+      <h3>🔥 Your Own Drake Bot</h3>
+      <p>BotFather က token ပို့ရုံနဲ့ command 300+ အပြည့်ပါတဲ့ ကိုယ့်ပိုင် clone ရမယ် — 24/7 run, စိတ်ကြိုက် /start text နဲ့။</p>
+      <a class="btn btn-fire" href="https://t.me/SayarthakinDrake_Clone_bot">🚀 Clone စလုပ်</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">💬 Community</div>
+    <div class="sec-sub">Drake family နဲ့ ချိတ်ဆက်</div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <a class="btn btn-ghost" href="https://t.me/drake_isthebest">👥 Group</a>
+      <a class="btn btn-ghost" href="https://t.me/Skkakalaau">👑 Owner</a>
+    </div>
+  </section>
+
+  <footer>
+    🔥 <b>ဆရာသခင်ဒရိတ်ဘော့</b> 🔥<br>
+    Built with fire by <a href="https://t.me/Skkakalaau">@Skkakalaau</a>
+  </footer>
+
+</div>
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll('.card,.wide-card').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
